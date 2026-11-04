@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../View/view.php';
 require_once __DIR__ . '/../Controller/bienvenueControleur.php';
-require_once __DIR__  . '/../Controller/creerCompte.php';
+require_once __DIR__  . '/../Controller/creerCompteControleur.php';
 
 function afficherErreur404(string $action = ''): void
 {
