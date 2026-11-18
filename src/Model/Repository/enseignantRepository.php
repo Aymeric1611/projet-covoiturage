@@ -22,3 +22,12 @@ function recupereUser(PDO $connexion, string $email): ?array
     ]);
     return $requete->fetch(PDO::FETCH_ASSOC) ?: null;
 }
+
+function recupereEnseignantParId(PDO $connexion, int $id): ?array
+{
+    $sql = "SELECT id_enseignant, nom, prenom, email FROM enseignants WHERE id_enseignant = :id";
+    $requete = $connexion->prepare($sql);
+    $requete->execute(['id' => $id]);
+
+    return $requete->fetch(PDO::FETCH_ASSOC) ?: null;
+}

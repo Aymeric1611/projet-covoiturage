@@ -4,6 +4,8 @@ require_once __DIR__ . '/../View/view.php';
 require_once __DIR__ . '/../Controller/bienvenueControleur.php';
 require_once __DIR__  . '/../Controller/creerCompteControleur.php';
 require_once __DIR__ . '/../Controller/seConnecterControleur.php';
+require_once __DIR__ . '/../Controller/espacePriveControleur.php';
+require_once __DIR__ . '/../Model/Repository/enseignantRepository.php';
 
 function afficherErreur404(string $action = ''): void
 {
@@ -49,9 +51,36 @@ function routerRequete(PDO $connexion): void
         return;
     }
 
+    $enseignantConnecte = null;
+    if (isset($_SESSION['enseignant_id'])) {
+        $idEnseignant = $_SESSION['enseignant_id'];
+        if (is_int($idEnseignant) && $idEnseignant > 0) {
+            $enseignantConnecte = recupereEnseignantParId($connexion, $idEnseignant);
+        }
+
+        if ($enseignantConnecte === null) {
+            $_SESSION = [];
+            if (!session_regenerate_id(true)) {
+                throw new RuntimeException('Impossible de renouveler l’identifiant de session.');
+            }
+        }
+    }
+
+    if ($action === 'espacePrive') {
+        header('Cache-Control: no-store, private');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        if ($enseignantConnecte === null) {
+            header('Location: index.php?action=seConnecter', true, 303);
+            return;
+        }
+    }
+
     match ($action) {
         'bienvenue' => afficherBienvenue($connexion),
         'creerCompte' => afficherCreerCompte($connexion),
         'seConnecter' => afficherSeConnecter($connexion),
+        'espacePrive' => afficherEspacePrive($enseignantConnecte),
     };
 }

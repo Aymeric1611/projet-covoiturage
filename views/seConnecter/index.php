@@ -14,15 +14,16 @@
 
     <form class="signup-form" method="post" action="index.php?action=seConnecter">
         <div class="form-field">
-            <label for="email">Adresse e-mail</label>
+            <label for="email">Adresse électronique <span aria-hidden="true">*</span></label>
             <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>"
                 placeholder="ex. : jane.doe@exemple.fr" autocomplete="email" required>
         </div>
         <div class="form-field">
-            <label for="mdp">Mot de passe</label>
+            <label for="mdp">Mot de passe <span aria-hidden="true">*</span></label>
             <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe"
-                autocomplete="new-password" required>
+                autocomplete="current-password" required>
         </div>
+        <p class="required-note"><span aria-hidden="true">*</span> Champ obligatoire.</p>
         <button class="signup-submit" type="submit">Se connecter <span aria-hidden="true">→</span></button>
     </form>
 </section>
