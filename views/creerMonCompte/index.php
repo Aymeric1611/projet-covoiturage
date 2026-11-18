@@ -2,9 +2,14 @@
     <div class="signup-heading">
         <span class="signup-eyebrow">Bienvenue parmi nous</span>
         <h1>Créer mon compte</h1>
-        <p>Renseignez vos informations pour rejoindre la communauté des enseignants.</p>
+    <?php if ($compteValide):?>
+        <p>Compte créé avec succès</p>
     </div>
 
+
+    <?php else :?>
+        <p>Renseignez vos informations pour rejoindre la communauté des enseignants.</p>
+    </div>
     <?php if ($erreurs !== []): ?>
     <div class="alert alert-error" role="alert">
         <strong>Veuillez corriger les erreurs suivantes :</strong>
@@ -30,9 +35,9 @@
         </div>
 
         <div class="form-field">
-            <label for="email">Adresse e-mail <span>*</span></label>
+            <label for="email">Adresse e-mail académique <span>*</span></label>
             <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>"
-                placeholder="ex. : jane.doe@exemple.fr" autocomplete="email" required>
+                placeholder="ex. : jane.doe@ac-besancon.fr" autocomplete="email" required>
             <small>Chaque adresse e-mail ne peut être utilisée qu’une seule fois.</small>
         </div>
 
@@ -58,4 +63,5 @@
 
         <button class="signup-submit" type="submit">Créer mon compte <span aria-hidden="true">→</span></button>
     </form>
+    <?php endif; ?>
 </section>
