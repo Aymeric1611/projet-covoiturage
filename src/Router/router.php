@@ -4,6 +4,7 @@ require_once __DIR__ . '/../View/view.php';
 require_once __DIR__ . '/../Controller/bienvenueControleur.php';
 require_once __DIR__  . '/../Controller/creerCompteControleur.php';
 require_once __DIR__ . '/../Controller/seConnecterControleur.php';
+require_once __DIR__ . '/../Controller/seDeconnecterControleur.php';
 require_once __DIR__ . '/../Controller/espacePriveControleur.php';
 require_once __DIR__ . '/../Model/Repository/enseignantRepository.php';
 
@@ -82,5 +83,6 @@ function routerRequete(PDO $connexion): void
         'creerCompte' => afficherCreerCompte($connexion),
         'seConnecter' => afficherSeConnecter($connexion),
         'espacePrive' => afficherEspacePrive($enseignantConnecte),
+        'seDeconnecter' => seDeconnecter(),
     };
 }

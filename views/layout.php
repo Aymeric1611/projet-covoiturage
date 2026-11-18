@@ -23,6 +23,9 @@
             <?php if (isset($_SESSION['enseignant_id'])): ?>
                 <a href="index.php?action=espacePrive"
                     <?= $pageCourante === 'espacePrive' ? ' class="active" aria-current="page"' : '' ?>>Mon espace</a>
+                <form class="logout-form" method="post" action="index.php?action=seDeconnecter">
+                    <button class="logout-button" type="submit">Se déconnecter</button>
+                </form>
             <?php else: ?>
                 <a href="index.php?action=creerCompte"
                     <?= $pageCourante === 'creerCompte' ? ' class="active" aria-current="page"' : '' ?>>Créer un compte</a>

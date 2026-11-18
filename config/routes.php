@@ -5,4 +5,5 @@ return [
     'creerCompte' => ['GET','POST'],
     'seConnecter' => ['GET','POST'],
     'espacePrive' => ['GET'],
+    'seDeconnecter' => ['POST'],
 ];
