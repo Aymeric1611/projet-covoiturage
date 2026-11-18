@@ -1,8 +1,3 @@
-<?php
-session_start();
-?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -27,10 +22,8 @@ session_start();
                 <?= $pageCourante === 'bienvenue' ? ' class="active" aria-current="page"' : '' ?>>Bienvenue</a>
             <a href="index.php?action=creerCompte"
                 <?= $pageCourante === 'creerCompte' ? ' class="active" aria-current="page"' : '' ?>>Créer un compte</a>
-        <?php if (session_start()): ?>
             <a href="index.php?action=seConnecter"
             <?= $pageCourante === 'seConnecter' ? ' class="active" aria-current="page"' : '' ?>>Se connecter</a>
-        <?php endif; ?>
         </nav>
     </header>
 

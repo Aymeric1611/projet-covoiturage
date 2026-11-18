@@ -2,8 +2,9 @@
     <div class="signup-heading">
         <span class="signup-eyebrow">Bienvenue parmi nous</span>
         <h1>Créer mon compte</h1>
-    <?php if ($compteValide):?>
-        <p>Compte créé avec succès</p>
+    <?php if ($compte): ?>
+        <p>Compte créé avec succès.</p>
+        <p><a href="index.php?action=seConnecter">Se connecter</a></p>
     </div>
 
 
